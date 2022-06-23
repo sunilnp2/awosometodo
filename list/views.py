@@ -25,11 +25,15 @@ class TodoView(BaseView):
 
     def post(self,request):
         username = request.user.username
+        user = request.user
         todo = request.POST['todo']
 
         if not todo:
             messages.error(request, 'input field is required')
             return redirect('list:todo')
+        if user is not None:
+            messages.error(request, "You are not registered yet")
+            return redirect('list:signup')
 
         list = Todo_List.objects.create(
                 username = username,
