@@ -31,7 +31,7 @@ class TodoView(BaseView):
         if not todo:
             messages.error(request, 'input field is required')
             return redirect('list:todo')
-        if user is not None:
+        if user is None:
             messages.error(request, "You are not registered yet")
             return redirect('list:signup')
 
