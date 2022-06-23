@@ -1,0 +1,77 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todos Pip</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- <h1>Hello, world!</h1> -->
+
+    <!-- navbar section start from here -->
+    <nav class="navbar navbar-expand-lg bg-secondary">
+        <div class="container-fluid">
+          <a class="navbar-brand"  id="navbar-section" href="{% url 'list:home' %}"><h3 style="color: white;">ToDos</h3></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active"  id="navbar-section" aria-current="page" href="{% url 'list:todo' %}"><h4 style="color: white;">Mytodo</h4></a>
+            </li>
+            
+            <li class="nav-item">
+                {% if request.user.is_authenticated %}
+                  <a class="nav-link active"  id="navbar-section" aria-current="page" href="{% url 'list:profile' %}"><h4 style="color: white;">Profile</h4></a>
+                {% comment %} <a class="nav-link"> <h4 style="color: white;"><a href = "{% url 'list:profile' %}">Profile</a></h4></a> {% endcomment %}
+                {% endif %}
+              </li>
+            </ul>
+            
+          </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link active"  id="navbar-section" aria-current="page"><h4 style="color: white; font-size:25px; color:yellow; font-weight:bold;">{{request.user.first_name}} {{request.user.last_name}}</h4></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active"  id="navbar-section" aria-current="page" href="{% url 'list:logout' %}"><h4 style="color: white;">&nbsp &nbsp Logout</h4></a>
+                  </li>
+                {% else %}
+              <li class="nav-item">
+                {% comment %} <a class="nav-link active" aria-current="page"><h4 style="color: white;">User</h4></a> {% endcomment %}
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active"  id="navbar-section" aria-current="page" href="{% url 'list:login' %}"><h4 style="color: white;">Login</h4></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active"  id="navbar-section" aria-current="page" href="{% url 'list:signup' %}"><h4 style="color: white;">Signup</h4></a>
+              </li>
+              {% endif %}
+          </div>
+        </div>
+      </nav>
+    <!-- navbar end -->
+
+    {% block content%}
+
+    {% endblock%}
+
+
+        <!-- footer start -->
+<div class="footer-sm12">
+    <p>© 2022 Nepalisun.All Rights Reserved</p>
+  </div>
+  
+      <!-- footer end -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    </body>
+  </html>

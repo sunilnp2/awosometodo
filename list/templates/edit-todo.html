@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- todo list start -->
+<div class="container-sm-12" style="height: 250px; margin-top: 30px;">
+    <div class="header-sm-12">
+    <p class="header-sm-6">Update Your Todo Mr/S Sunil</p>
+    <p class="datetime-sm-6">Date : 2079/04/05</p>
+</div>
+<div class="input-sm12" style="margin-top:50px;">
+    <form action="" method = 'post' novalidate>
+      {% csrf_token %}
+        <input type="text" name="add" placeholder="update your todo.." style="width: 95%; margin-bottom: 5px;">
+        <div class="edit-delete-sm12">
+        <button type="button" style="width: 23%; display: inline-block; margin-right: 5px;"><a style="text-decoration: none; color:white;" href = "{% url 'list:home' %}"> Calcel </a></button>
+        <button type="submit" style="width: 23%; display: inline-block; margin-right: 15px;">Update</button>
+      </div>
+    </form>
+</div>
+
+{% endblock%}
+
+
+
