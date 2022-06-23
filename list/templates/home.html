@@ -24,14 +24,15 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
               <li class="nav-item">
                 <a class="nav-link active" id="navbar-section" aria-current="page" href="{% url 'list:todo' %}"><h4 style="color: white;">MyTodo</h4></a>
               </li>
-             
+              
               <li class="nav-item">
               
+                {% if request.user.is_authenticated %}
                   <a class="nav-link active" aria-current="page" href="{% url 'list:profile' %}"><h4 style="color: white;">Profile</h4></a>
+                  {% endif %}
                 {% comment %} <a class="nav-link"> <h4 style="color: white;"><a href = "{% url 'list:profile' %}">Profile</a></h4></a> {% endcomment %}
              
               </li>
@@ -69,9 +70,9 @@
     <div class="body-text-sm12">
         <p>Welcome to Awosome Todos  </p>
           <p> You can add Your daily todo here </p>
-          {% if request.user.is_authenticated%}
+          {% comment %} {% if request.user.is_authenticated%} {% endcomment %}
           <button><a style = "text-decoration:none;" href = "{% url 'list:todo'%}">Manage Your Todo</a></button>
-          {% endif %}
+          {% comment %} {% endif %} {% endcomment %}
         </div>
         <!-- <div class="registration-section">
             <button>Login</button>
