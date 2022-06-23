@@ -70,9 +70,7 @@
     <div class="body-text-sm12">
         <p>Welcome to Awosome Todos  </p>
           <p> You can add Your daily todo here </p>
-          {% comment %} {% if request.user.is_authenticated%} {% endcomment %}
           <button><a style = "text-decoration:none;" href = "{% url 'list:todo'%}">Manage Your Todo</a></button>
-          {% comment %} {% endif %} {% endcomment %}
         </div>
         <!-- <div class="registration-section">
             <button>Login</button>
